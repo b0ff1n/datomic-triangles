@@ -7,6 +7,9 @@
   [& args]
   (println "Hello, World!"))
 
+
+(def props [])
+
 (defn trinities [n]
   (let [sizes (range 1 n)]
     (combo/cartesian-product sizes sizes sizes)))
@@ -24,3 +27,11 @@
        (map sort)
        (distinct)
        (map #(zipmap [:a :b :c] %))))
+
+(defn enrich-triangle [{:keys [a b c] :as obj}]
+  (let []
+    (assoc obj
+      :a_square (* a a)
+      :b_square (* b b)
+      :c_square (* c c)
+      :perimiter (+ a b c))))
